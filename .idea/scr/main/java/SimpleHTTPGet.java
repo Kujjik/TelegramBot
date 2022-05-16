@@ -8,9 +8,10 @@ import java.util.Map;
 
 
 public class SimpleHTTPGet {
+    private static final String URL="https://google.by";
     public String getJson () throws IOException {
         String text=null;
-        URL url = new URL("https://google.by");
+        URL url = new URL(URL);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("Content-Type", "application/json");
