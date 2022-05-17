@@ -1,0 +1,9 @@
+*.class
+*/target/
+*.iml
+.idea/*
+*.log
+*.tmp
+.gitkeep
+*.jar
+*.txt
