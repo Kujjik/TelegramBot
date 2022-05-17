@@ -39,7 +39,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.telegramBot.Bot">
+  <component name="RunManager" selected="Application.App.Bot">
     <configuration name="Bot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Bot" />
       <module name="TelegramBot" />
@@ -47,8 +47,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="telegramBot.Bot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="telegramBot.Bot" />
+    <configuration name="App.Bot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App.Bot" />
       <module name="TelegramBot" />
       <extension name="coverage">
         <pattern>
@@ -62,7 +62,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.telegramBot.Bot" />
+        <item itemvalue="Application.App.Bot" />
         <item itemvalue="Application.Bot" />
       </list>
     </recent_temporary>

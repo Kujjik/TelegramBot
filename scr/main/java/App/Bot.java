@@ -1,22 +1,19 @@
-package telegramBot;
+package App;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.User;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Bot extends TelegramLongPollingBot {
     private final String BOT_NAME = "Kujjik_bot";
@@ -44,9 +41,8 @@ public class Bot extends TelegramLongPollingBot {
     /**
      * Отправка ответа
      *
-     * @param chatId   id чата
-     * @param userName имя пользователя
-     * @param text     текст ответа
+     * @param chatId id чата
+     * @param text   текст ответа
      */
     private void setAnswer(Long chatId, String text) {
         SendMessage answer = new SendMessage();
@@ -56,37 +52,31 @@ public class Bot extends TelegramLongPollingBot {
             execute(answer);
         } catch (TelegramApiException e) {
         }
-        /*answer.setReplyMarkup(replyKeyboardMaker.getMainMenuKeyboard());*/
     }
 
     @Override
     public void onUpdateReceived(Update update) {
+
+        ModelWeather model = new ModelWeather();
         Message msg = update.getMessage();
         Long chatId = msg.getChatId();
-        String textAnswer=null;
-        SimpleHTTPGet simpleHTTPGet=new SimpleHTTPGet();
-        if (msg!=null && msg.hasText()){
-            switch (msg.getText()){
+            switch (msg.getText()) {
                 case "/help":
-                    textAnswer="Общие команды";
-                    setAnswer(chatId,textAnswer);
+                    setAnswer(chatId, "Общие команды");
                     break;
                 case "/weather":
-                    textAnswer="Погода";
-                    setAnswer(chatId,textAnswer);
+                        setAnswer(msg.getChatId(), "Enter the city: ");
                     break;
                 case "/exchange":
-                    textAnswer="Курсы валют";
-                    setAnswer(chatId,textAnswer);
+                    setAnswer(chatId, "Курсы валют");
                     break;
                 default:
-            }
+
         }
     }
 
 
-   public void initKeyboard()
-    {
+    public void initKeyboard() {
         //Создаем объект будущей клавиатуры и выставляем нужные настройки
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         replyKeyboardMarkup.setResizeKeyboard(true); //подгоняем размер
