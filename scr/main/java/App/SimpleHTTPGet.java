@@ -35,14 +35,13 @@ public class SimpleHTTPGet {
         JSONArray getArray = object.getJSONArray("weather");
         for (int i = 0; i < getArray.length(); i++) {
             JSONObject obj = getArray.getJSONObject(i);
-           // model.setIcon((String) obj.get("icon"));
             model.setMain((String) obj.get("main"));
         }
 
-        return "City: " + model.getName() + "\n" +
-                "Temperature: " + model.getTemp() + "C" + "\n" +
-                "Humidity:" + model.getHumidity() + "%" + "\n" +
-                "Main: " + model.getMain() + "\n";
+        return "Город \uD83C\uDFD9: " + model.getName() + "\n" +
+                "Температура \uD83C\uDF21: " + model.getTemp() + "C" + "\n" +
+                "Влажность \uD83D\uDCA7:" + model.getHumidity() + "%" + "\n" +
+                "Сегодня \uD83C\uDFB2: " + model.getMain() + "\n";
     }
 
 }

@@ -60,6 +60,9 @@ public class Bot extends TelegramLongPollingBot {
         Long chatId = msg.getChatId();
             switch (msg.getText()) {
                 case "/start":
+                    setAnswer(chatId, "Есть несколько команд /help \uD83C\uDD98,/exchange\uD83D\uDCB0,/weather \uD83D\uDCB0");
+                    break;
+                case "/help":
                     setAnswer(chatId, "Конечно тут должно было быть куча функционала, " +
                             "но этот перень не сильно разобрался с многопотоком \uD83D\uDE2B");
                     break;
