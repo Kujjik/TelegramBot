@@ -35,7 +35,7 @@ public class SimpleHTTPGet {
         JSONArray getArray = object.getJSONArray("weather");
         for (int i = 0; i < getArray.length(); i++) {
             JSONObject obj = getArray.getJSONObject(i);
-            model.setIcon((String) obj.get("icon"));
+           // model.setIcon((String) obj.get("icon"));
             model.setMain((String) obj.get("main"));
         }
 

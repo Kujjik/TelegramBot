@@ -40,7 +40,6 @@ public class Bot extends TelegramLongPollingBot {
 
     /**
      * Отправка ответа
-     *
      * @param chatId id чата
      * @param text   текст ответа
      */
@@ -56,21 +55,30 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-
         ModelWeather model = new ModelWeather();
         Message msg = update.getMessage();
         Long chatId = msg.getChatId();
             switch (msg.getText()) {
-                case "/help":
-                    setAnswer(chatId, "Общие команды");
-                    break;
-                case "/weather":
-                        setAnswer(msg.getChatId(), "Enter the city: ");
+                case "/start":
+                    setAnswer(chatId, "Конечно тут должно было быть куча функционала, " +
+                            "но этот перень не сильно разобрался с многопотоком \uD83D\uDE2B");
                     break;
                 case "/exchange":
-                    setAnswer(chatId, "Курсы валют");
+                    setAnswer(chatId, "И не то что бы он не старался, минус 2 дня, короткие сроки " +
+                            "(не, нуууу объективно он тут сам виноват)");
+                    break;
+                case "/weather":
+                    setAnswer(msg.getChatId(), "Сделаем вид, что сейчас я прошу вас ввести город в котором " +
+                            "вам интересно узнать погоду (но на деле это все работает не так \uD83D\uDE05), но вы " +
+                            "попробуйте, введите интересующий вас город: ");
                     break;
                 default:
+                    try {
+                        setAnswer(chatId, SimpleHTTPGet.getJson(msg.getText(), model));
+                    } catch (IOException e) {
+                        setAnswer(chatId, "Ага, а может еще и погоду в Атлантиде показать, да ладно " +
+                                "будьте реалистом! \uD83D\uDE15");
+                    }
 
         }
     }
